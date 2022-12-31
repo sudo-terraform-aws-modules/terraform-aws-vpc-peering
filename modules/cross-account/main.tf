@@ -1,5 +1,7 @@
 module "requester" {
-  source = "../requester"
+  source  = "sudo-terraform-aws-modules/vpc-peering/aws//modules/requester"
+  version = "1.0.0"
+
   vpc_id = var.vpc_id
   peer_vpc_id = var.peer_vpc_id
   peer_account_id = data.aws_caller_identity.accepter_account.account_id
@@ -10,7 +12,9 @@ module "requester" {
   }
 }
 module "accepter" {
-  source = "../accepter"
+  source  = "sudo-terraform-aws-modules/vpc-peering/aws//modules/accepter"
+  version = "1.0.0"
+
   vpc_connection_peering_id = module.requester.vpc_connection_peering_id
   dns_resolution = var.dns_resolution
   providers = {
