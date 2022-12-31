@@ -6,14 +6,7 @@ terraform {
     aws = {
       source                = "hashicorp/aws"
       version               = "~> 3.0"
-      #configuration_aliases = [aws.requester, aws.accepter]
+      configuration_aliases = [aws.requester, aws.accepter]
     }
   }
-}
-
-provider "aws" {
-  alias="requester"
-}
-provider "aws" {
-  alias="accepter"
 }
